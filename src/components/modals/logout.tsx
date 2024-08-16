@@ -2,6 +2,7 @@ import { Button, Modal } from "antd";
 import { useState } from "react";
 import { LogoutOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { removeDataFromCookie } from "@data-service";
 
 const MyModal: React.FC = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const MyModal: React.FC = () => {
     setIsModalVisible(false);
   };
   const out = () => {
+    removeDataFromCookie("token");
     navigate('/login')
     window.location.reload()
   }

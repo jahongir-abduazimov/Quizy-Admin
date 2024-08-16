@@ -1,21 +1,40 @@
-// import type { FormProps } from "antd";
 import { Button, Form, Input } from "antd";
-// import { useNavigate } from "react-router-dom";
-// import Notification from "@notification";
-import { auth } from "@service"
-
+import { useNavigate } from "react-router-dom";
+import Notification from "@notification";
+import { auth } from "@service";
+import { setDataToCookie, getDataFromCookie } from "@data-service";
+import { useEffect, useState } from "react";
 
 const Index = () => {
-  // const navigate = useNavigate();
-
-  const onFinish = async (values:any) => {
-    try {
-      const res = await auth.sign_in(values)
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+  const navigate = useNavigate();
+  const [buttonLoading, setButtonLoading] = useState(false)
+  useEffect(() => {
+    const token = getDataFromCookie("token");
+    if (token) {
+      navigate("/");
     }
-    console.log(values);
+  }, [])
+  const onFinish = async (values: any) => {
+    setButtonLoading(true)
+    try {
+      const res = await auth.sign_in(values);
+      console.log(res);
+      if (res?.status === 200) {
+        setDataToCookie("token", res?.data?.token)
+        Notification({
+          message: "Successfully login!",
+          type: "success",
+        });
+        navigate("/");
+      }
+    } catch (error: any) {
+      Notification({
+        message: "Email or password incorrect!",
+        type: "error",
+      });
+    } finally {
+      setButtonLoading(false)
+    }
   };
   return (
     <div className="h-screen flex flex-col items-center justify-center">
@@ -50,8 +69,8 @@ const Index = () => {
                 message: "Please input your password!",
               },
               {
-                min: 6,
-                message: "Please input at least 6 characters!",
+                min: 5,
+                message: "Please input at least 5 characters!",
               },
             ]}
           >
@@ -60,12 +79,13 @@ const Index = () => {
 
           <Form.Item>
             <Button
+              loading={buttonLoading}
               size="large"
               style={{ width: "100%" }}
               type="primary"
               htmlType="submit"
             >
-              Submit
+              Login
             </Button>
           </Form.Item>
         </Form>

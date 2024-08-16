@@ -35,7 +35,7 @@ const App: React.FC = () => {
       </Header>
       <Content style={{ padding: "11px 48px 48px 48px" }}>
         <div className="h-[27px] mb-2">
-          {location.pathname.slice(1, 14) === "subcategories" && (
+          {location.pathname.slice(1, 9) === "category" && (
             <Breadcrumb
               items={[
                 {
@@ -51,7 +51,7 @@ const App: React.FC = () => {
               ]}
             />
           )}
-          {location.pathname.slice(1, 8) === "quizzes" && (
+          {location.pathname.slice(1, 5) === "quiz" && (
             <Breadcrumb
               items={[
                 {

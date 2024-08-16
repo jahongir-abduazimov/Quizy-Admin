@@ -1,27 +1,19 @@
-import { useState } from "react";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Popconfirm, Tooltip } from "antd";
 import { Link } from "react-router-dom";
-import CategoryModal from "../../components/modals/category";
-const Index = ({ title, id }: any) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+const Index = ({ data, handleDelete, handleEdit }: any) => {
   return (
     <>
-      <CategoryModal
-        open={isModalVisible}
-        handleClose={() => setIsModalVisible(false)}
-        id={id}
-      />
       <div className="relative w-[200px] h-[110px] rounded-md bg-white border-mainColor duration-200 shadow-[0_2px_7px_silver] hover:shadow-[0_4px_15px_silver] hover:scale-105">
-        <Link to={`/subcategories/${title}`}>
+        <Link to={`/category/${data?.id}`}>
           <div className="flex items-center justify-center cursor-pointer w-full h-full p-3">
-            <p className="line-clamp-2 font-semibold text-[18px]">{title}</p>
+            <p className="line-clamp-2 font-semibold text-[18px]">{data?.title}</p>
           </div>
         </Link>
         <div className="flex items-center gap-2 absolute top-1 right-1">
           <Tooltip title="Edit">
             <Button
-              onClick={() => setIsModalVisible(true)}
+              onClick={() => handleEdit(data)}
               type="text"
               shape="circle"
               icon={<EditOutlined />}
@@ -34,6 +26,7 @@ const Index = ({ title, id }: any) => {
               okText="Yes"
               cancelText="No"
               placement="topRight"
+              onConfirm={() => handleDelete(data?.id)}
             >
               <Button type="text" shape="circle" icon={<DeleteOutlined />} />
             </Popconfirm>

@@ -15,8 +15,8 @@ import {
           <Route path="/login" element={<SignIn />} />
           <Route path="/" element={<Home />}>
             <Route index element={<Categories />} />
-            <Route path="/subcategories/:categoryId" element={<Subcategories />} />
-            <Route path="/quizzes/:quizId" element={<Quizes />} />
+            <Route path="/category/:categoryId" element={<Subcategories />} />
+            <Route path="/quiz/:quizId" element={<Quizes />} />
           </Route>
         </Route>
       )
