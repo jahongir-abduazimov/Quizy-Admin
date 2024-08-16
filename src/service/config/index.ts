@@ -2,7 +2,7 @@ import axios from "axios";
 import { getDataFromCookie } from "@data-service";
 
 const request = axios.create({
-  baseURL: "http://alibekmoyliyev.uz/api",
+  baseURL: "https://alibekmoyliyev.uz/api",
 });
 
 request.interceptors.request.use((config) => {

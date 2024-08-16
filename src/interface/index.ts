@@ -39,6 +39,7 @@ export interface SubcategoryRequest {
 export interface SubcategoryStore {
   subcategories: any[];
   isLoading: boolean;
+  subcategoryId: string;
   getSubcategories: (id:string | undefined) => Promise<any>;
   postSubcategory: (data: any) => Promise<any>;
   deleteSubcategory: (id: any) => Promise<any>;

@@ -28,10 +28,18 @@ const Index = () => {
         navigate("/");
       }
     } catch (error: any) {
-      Notification({
-        message: "Email or password incorrect!",
-        type: "error",
-      });
+      if (error.response.status === 401) {
+        Notification({
+          message: "Email or password incorrect!",
+          type: "error",
+        });
+      } else {
+        console.log(error);
+        Notification({
+          message: "An error occurred!",
+          type: "error",
+        });
+      }
     } finally {
       setButtonLoading(false)
     }

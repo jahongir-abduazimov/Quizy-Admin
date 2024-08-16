@@ -6,6 +6,7 @@ import Notification from "@notification";
 const useCategoryStore = create<SubcategoryStore>((set) => ({
   subcategories: [],
   isLoading: false,
+  subcategoryId: "",
   getSubcategories: async (id) => {
     set({ isLoading: true });
     try {

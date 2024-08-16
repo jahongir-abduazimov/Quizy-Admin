@@ -11,6 +11,7 @@ const Index = () => {
   const handleClose = () => setShowModal(false);
   const handleEdit = () => {
     setShowMenu(false);
+    setShowModal(true)
   }
   const handleDelete = () => {
     setShowMenu(false);
