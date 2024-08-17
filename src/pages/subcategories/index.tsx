@@ -27,6 +27,9 @@ const Index = () => {
     getCategories();
     getSubcategories(categoryId);
   }, []);
+  useEffect(() => {
+    localStorage.removeItem("quiz_name")
+  }, []);
   return (
     <>
       <SubCategoryModal open={showModal} handleClose={handleClose} params={categoryId} item={item} />

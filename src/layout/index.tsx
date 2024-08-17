@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Breadcrumb, Layout, theme } from "antd";
@@ -40,13 +39,13 @@ const App: React.FC = () => {
               items={[
                 {
                   title: (
-                    <a onClick={() => navigate(-1)} className="text-[16px]">
+                    <a onClick={() => navigate(-1)} className="text-[18px]">
                       Categories
                     </a>
                   ),
                 },
                 {
-                  title: <p className="text-[16px]">Subcategories</p>,
+                  title: <p className="text-[18px]">{localStorage.getItem("subcategory_name")}</p>,
                 },
               ]}
             />
@@ -56,20 +55,20 @@ const App: React.FC = () => {
               items={[
                 {
                   title: (
-                    <a onClick={() => navigate(-2)} className="text-[16px]">
+                    <a onClick={() => navigate(-2)} className="text-[18px]">
                       Categories
                     </a>
                   ),
                 },
                 {
                   title: (
-                    <a onClick={() => navigate(-1)} className="text-[16px]">
-                      Subcategories
+                    <a onClick={() => navigate(-1)} className="text-[18px]">
+                      {localStorage.getItem("subcategory_name")}
                     </a>
                   ),
                 },
                 {
-                  title: <p className="text-[16px]">Quizzes</p>,
+                  title: <p className="text-[18px]">{localStorage.getItem("quiz_name")}</p>,
                 },
               ]}
             />

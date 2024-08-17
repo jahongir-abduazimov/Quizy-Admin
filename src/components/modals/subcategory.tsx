@@ -6,10 +6,6 @@ const App = ({ open, handleClose, item, params }: any) => {
   const { postSubcategory, editSubcategory } = SubcategoryStore()
   const [buttonLoading, setButtonLoading] = useState(false)
   const [form] = Form.useForm();
-  const initialValues: any = {
-    title: item?.title || "",
-    time: item?.time || "",
-  }
   const onFinish = async (values: any) => {
     const payload = {
       categoryId: params,
@@ -59,7 +55,6 @@ const App = ({ open, handleClose, item, params }: any) => {
           autoComplete="off"
           layout="vertical"
           form={form}
-          initialValues={initialValues}
         >
           <Form.Item
             label="Subcategory name"

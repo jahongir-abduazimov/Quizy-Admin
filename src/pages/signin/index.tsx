@@ -29,7 +29,7 @@ const Index = () => {
       }
     } catch (error: any) {
       Notification({
-        message: error.request.status === 401 ? "Email or password incorrect!" : "Something went wrong",
+        message: error.request.status === 401 ? "Email or password incorrect!" : "Something went wrong!",
         type: "error",
       });
     } finally {

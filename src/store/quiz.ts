@@ -1,16 +1,17 @@
 import { create } from "zustand";
-import { SubcategoryStore } from "@interface";
-import { subcategory } from "@service";
+import { QuizStore } from "@interface";
+import { quiz } from "@service";
 import Notification from "@notification";
 
-const useCategoryStore = create<SubcategoryStore>((set) => ({
-  subcategories: [],
+const useCategoryStore = create<QuizStore>((set) => ({
+  quizzes: [],
   isLoading: false,
-  getSubcategories: async (id) => {
+  getQuizzes: async (id) => {
     set({ isLoading: true });
     try {
-      const response = await subcategory.get_subcategories(id);
-      set({ subcategories: response?.data?.data });
+      const response = await quiz.get_quizzes(id);
+      console.log(response);
+      set({ quizzes: response?.data?.data });
       return response;
     } catch (error: any) {
       console.log(error);
@@ -18,13 +19,13 @@ const useCategoryStore = create<SubcategoryStore>((set) => ({
       set({ isLoading: false });
     }
   },
-  postSubcategory: async (data) => {
+  postQuiz: async (data) => {
     try {
-      const response = await subcategory.post_subcategory(data);
+      const response = await quiz.post_quiz(data);
       console.log(response);
       if (response.status === 201) {
         set((state) => ({
-          subcategories: [...state.subcategories, response.data.data],
+          quizzes: [...state.quizzes, response.data.data],
         }));
         Notification({
           type: "success",
@@ -39,11 +40,11 @@ const useCategoryStore = create<SubcategoryStore>((set) => ({
       })
     }
   },
-  deleteSubcategory: async (id) => {
+  deleteQuiz: async (id) => {
     try {
-      const response = await subcategory.delete_subcategory(id);
+      const response = await quiz.delete_quiz(id);
       set((state) => ({
-        subcategories: state.subcategories.filter((subcategory) => subcategory.id!== id),
+        quizzes: state.quizzes.filter((quizy) => quizy.id!== id),
       }));
       Notification({
         type: "success",
@@ -57,13 +58,13 @@ const useCategoryStore = create<SubcategoryStore>((set) => ({
       });
     }
   },
-  editSubcategory: async (id, data) => {
+  editQuiz: async (id, data) => {
     try {
-      const response = await subcategory.edit_subcategory(id, data);
+      const response = await quiz.edit_quiz(id, data);
       console.log(response);
       set((state) => ({
-        subcategories: state.subcategories.map((subcategory) =>
-          subcategory.id === id? {...subcategory,...data} : subcategory
+        quizzes: state.quizzes.map((quizy) =>
+          quizy.id === id? {...quizy,...data} : quizy
         ),
       }));
       Notification({

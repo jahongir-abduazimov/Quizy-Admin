@@ -39,9 +39,26 @@ export interface SubcategoryRequest {
 export interface SubcategoryStore {
   subcategories: any[];
   isLoading: boolean;
-  subcategoryId: string;
   getSubcategories: (id:string | undefined) => Promise<any>;
   postSubcategory: (data: any) => Promise<any>;
   deleteSubcategory: (id: any) => Promise<any>;
   editSubcategory: (id: any, data: any) => Promise<any>;
+}
+
+// ---------- Quiz ----------
+
+export interface QuizRequest {
+  get_quizzes: (id: string | undefined) => any;
+  post_quiz: (data: any) => any;
+  delete_quiz: (id: any) => any;
+  edit_quiz: (id: any, data: any) => any;
+}
+
+export interface QuizStore {
+  quizzes: any[];
+  isLoading: boolean;
+  getQuizzes: (id: string | undefined) => Promise<any>;
+  postQuiz: (data: any) => Promise<any>;
+  deleteQuiz: (id: any) => Promise<any>;
+  editQuiz: (id: any, data: any) => Promise<any>;
 }

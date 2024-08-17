@@ -6,7 +6,7 @@ const Index = ({ data, handleDelete, handleEdit }: any) => {
     <>
       <div className="relative w-[200px] h-[110px] rounded-md bg-white border-mainColor duration-200 shadow-[0_2px_7px_silver] hover:shadow-[0_4px_15px_silver] hover:scale-105">
         <Link to={`/category/${data?.id}`}>
-          <div className="flex items-center justify-center cursor-pointer w-full h-full p-3">
+          <div onClick={() => localStorage.setItem("subcategory_name", data?.title)} className="flex items-center justify-center cursor-pointer w-full h-full p-3">
             <p className="line-clamp-2 font-semibold text-[18px]">{data?.title}</p>
           </div>
         </Link>
