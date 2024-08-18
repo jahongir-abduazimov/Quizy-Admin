@@ -38,10 +38,10 @@ const Index = () => {
   };
   return (
     <div className="h-screen flex flex-col items-center justify-center">
-      <p className="mb-8 text-[34px] font-bold text-center text-mainColor">
+      <p className="mb-4 sm:mb-8 text-[28px] sm:text-[34px] font-semibold sm:font-bold text-center text-mainColor">
         Admin
       </p>
-      <div className="w-[450px]">
+      <div className="w-[310px] sm:w-[450px]">
         <Form
           name="basic"
           initialValues={{ remember: true }}

@@ -70,7 +70,7 @@ const Index = () => {
         id={questionId}
       />
       <div className="flex justify-between">
-        <p className="text-mainColor text-[26px] font-semibold mb-10">
+        <p className="text-mainColor text-[22px] md:text-[26px] font-semibold mb-10 line-clamp-1">
           {localStorage.getItem("quiz_name")}
         </p>
         <Button
@@ -79,7 +79,7 @@ const Index = () => {
           type="primary"
           icon={<PlusOutlined />}
         >
-          Add Question
+          <p className="hidden sm:block">Add Question</p>
         </Button>
       </div>
       {isLoading === true ? (
@@ -94,7 +94,7 @@ const Index = () => {
                 key={index}
                 className="relative duration-200 border border-mainColor pl-7 pr-3 py-3 rounded-md flex justify-between gap-5 items-center"
               >
-                <p className="text-[18px] font-semibold line-clamp-1">
+                <p className="text-[18px] font-semibold line-clamp-2">
                   {item.quiz}
                 </p>
                 <div className="relative menu-wrapper">

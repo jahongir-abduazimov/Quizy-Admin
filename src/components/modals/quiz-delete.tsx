@@ -15,9 +15,9 @@ const MyModal: React.FC<MyComponents> = ({open, handleClose, id}:any) => {
   return (
     <>
       <Modal
+        className="max-w-[450px]"
         open={open}
         onCancel={handleClose}
-        style={{ maxWidth: "450px" }}
         title="Are you sure you want dalete this question"
         footer={
           <div className="flex items-center gap-3 justify-end mt-10">

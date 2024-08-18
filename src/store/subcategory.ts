@@ -21,7 +21,6 @@ const useCategoryStore = create<SubcategoryStore>((set) => ({
   postSubcategory: async (data) => {
     try {
       const response = await subcategory.post_subcategory(data);
-      console.log(response);
       if (response.status === 201) {
         set((state) => ({
           subcategories: [...state.subcategories, response.data.data],
@@ -60,7 +59,6 @@ const useCategoryStore = create<SubcategoryStore>((set) => ({
   editSubcategory: async (id, data) => {
     try {
       const response = await subcategory.edit_subcategory(id, data);
-      console.log(response);
       set((state) => ({
         subcategories: state.subcategories.map((subcategory) =>
           subcategory.id === id? {...subcategory,...data} : subcategory

@@ -19,21 +19,18 @@ const MyModal: React.FC = () => {
     <>
       <Button
         onClick={() => setIsModalVisible(true)}
-        style={{
-          marginRight: "30px",
-          display: "flex",
-          alignItems: "center",
-        }}
+        icon={<LogoutOutlined style={{ fontSize: "20px" }} />}
         size="large"
         type="text"
       >
-        <LogoutOutlined style={{ fontSize: "20px" }} />
-        <span className="font-semibold">Logout</span>
+        <div className="hidden sm:block">
+           <span className="font-semibold">Logout</span>
+        </div>
       </Button>
       <Modal
+        className="max-w-[450px]"
         open={isModalVisible}
         onCancel={handleCancel}
-        style={{ maxWidth: "450px" }}
         title="Are you sure you want to log out?"
         footer={
           <div className="flex items-center gap-3 justify-end mt-10">

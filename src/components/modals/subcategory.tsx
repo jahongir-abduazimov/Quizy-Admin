@@ -43,11 +43,11 @@ const App = ({ open, handleClose, item, params }: any) => {
   return (
     <>
       <Modal
+        className="max-w-[450px]"
         title={item?.id ? "Edit subcategory" : "Add new subcategory"}
         open={open}
         onCancel={handleClose}
         footer
-        style={{ maxWidth: "450px" }}
       >
         <Form
           name="basic"

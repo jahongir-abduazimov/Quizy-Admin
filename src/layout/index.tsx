@@ -13,39 +13,33 @@ const App: React.FC = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout className="h-[100vh]">
+    <Layout className="h-[100vh] overflow-hidden">
       <Header
-        style={{
-          display: "flex",
-          alignItems: "center",
-          height: "10%",
-          backgroundColor: "white",
-          boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
-        }}
+        className="flex items-center h-[7%] md:h-[10%] bg-white shadow-[0_2px_10px_#0000001a] px-5 md:px-12"
       >
         <div className="flex h-full items-center justify-between w-full">
           <Link to="/" className="demo-logo">
-            <img src={Logo} alt="quizy logo" />
+            <img className="w-[130px]" src={Logo} alt="quizy logo" />
           </Link>
           <div>
             <LogOutModal/>
           </div>
         </div>
       </Header>
-      <Content style={{ padding: "11px 48px 48px 48px" }}>
-        <div className="h-[27px] mb-2">
+      <Content className="px-5 pb-5 pt-1 md:px-12 md:pb-12 md:pt-[11px]">
+        <div className="min-h-[27px] mb-2">
           {location.pathname.slice(1, 9) === "category" && (
             <Breadcrumb
               items={[
                 {
                   title: (
-                    <a onClick={() => navigate(-1)} className="text-[18px]">
+                    <a onClick={() => navigate(-1)} className="text-[16px] sm:text-[18px]">
                       Categories
                     </a>
                   ),
                 },
                 {
-                  title: <p className="text-[18px]">{localStorage.getItem("subcategory_name")}</p>,
+                  title: <p className="text-[16px] sm:text-[18px] line-clamp-1">{localStorage.getItem("subcategory_name")}</p>,
                 },
               ]}
             />
@@ -55,20 +49,20 @@ const App: React.FC = () => {
               items={[
                 {
                   title: (
-                    <a onClick={() => navigate(-2)} className="text-[18px]">
+                    <a onClick={() => navigate(-2)} className="text-[16px] sm:text-[18px]">
                       Categories
                     </a>
                   ),
                 },
                 {
                   title: (
-                    <a onClick={() => navigate(-1)} className="text-[18px]">
+                    <a onClick={() => navigate(-1)} className="text-[16px] sm:text-[18px] line-clamp-1">
                       {localStorage.getItem("subcategory_name")}
                     </a>
                   ),
                 },
                 {
-                  title: <p className="text-[18px]">{localStorage.getItem("quiz_name")}</p>,
+                  title: <p className="text-[16px] sm:text-[18px] line-clamp-1">{localStorage.getItem("quiz_name")}</p>,
                 },
               ]}
             />

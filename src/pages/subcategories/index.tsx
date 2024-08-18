@@ -36,7 +36,7 @@ const Index = () => {
       {categories.map(
         (item, index) =>
           item.id === categoryId && (
-            <p key={index} className="text-mainColor text-[26px] font-semibold mb-6">
+            <p key={index} className="text-mainColor text-[22px] md:text-[26px] font-semibold mb-3 md:mb-6 line-clamp-1">
               {item?.title}
             </p>
           )
@@ -46,13 +46,13 @@ const Index = () => {
           <Spin size="large" />
         </div>
       ) : (
-        <div className="grid gap-5 grid-cols-6 auto-cols-max">
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 auto-cols-max">
           {subcategories?.map((item: any, index: number) => (
             <Card key={index} data={item} handleDelete={handleDelete} handleEdit={handleEdit} />
           ))}
           <div
             onClick={() => setShowModal(true)}
-            className="flex items-center justify-center cursor-pointer w-[200px] h-[110px] rounded-md bg-white border border-mainColor p-3"
+            className="flex items-center justify-center cursor-pointer w-full sm:w-[180px] md:w-[200px] h-[110px] rounded-md bg-white border border-mainColor p-3"
           >
             <PlusOutlined className="text-[30px]" />
           </div>
